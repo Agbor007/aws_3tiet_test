@@ -16,7 +16,7 @@ Download the code from the Git repository:
 github.com/synthetico/3-Tier-_Architecture.git
 ```
 
-## App Server Setup: Launch an ec2 instance in APP subnet of Custom VPC
+## App Server Setup: Launch an ec2 instance to be used in App-Tier
 
 ### Install MySQL
 
