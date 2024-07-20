@@ -13,7 +13,7 @@
 Download the code from the Git repository:
 
 ```bash
-git clone https://github.com/avizway1/aws_3tier_architecture.git
+github.com/synthetico/3-Tier-_Architecture.git
 ```
 
 ## App Server Setup: Launch an ec2 instance in APP subnet of Custom VPC
@@ -24,6 +24,7 @@ On the app server, install MySQL:
 
 ```bash
 sudo yum install mysql -y
+sudo apt install mysql -y #Ubuntu
 ```
 
 ### Configure MySQL Database
