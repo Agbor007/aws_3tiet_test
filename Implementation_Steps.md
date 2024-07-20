@@ -38,9 +38,9 @@ mysql -h mydb.cfpgnjehw330.ap-south-1.rds.amazonaws.com -u admin -p
 In the MySQL shell, execute the following commands:
 
 ```sql
-CREATE DATABASE webappdb;
+CREATE DATABASE trustechdb;
 SHOW DATABASES;
-USE webappdb;
+USE trustechdb;
 
 CREATE TABLE IF NOT EXISTS transactions(
   id INT NOT NULL AUTO_INCREMENT, 
@@ -76,7 +76,7 @@ Download application code from S3 and start the application:
 
 ```bash
 cd ~/
-aws s3 cp s3://3tierproject-avinash/application-code/app-tier/ app-tier --recursive
+aws s3 cp s3://3tier-s3-bucket237/application-code/app-tier/ app-tier --recursive
 
 cd ~/app-tier
 npm install
@@ -117,7 +117,7 @@ nvm install 16
 nvm use 16
 
 cd ~/
-aws s3 cp s3://3tierproject-avinash/application-code/web-tier/ web-tier --recursive
+aws s3 cp s3://3tier-s3-bucket237/application-code/web-tier/ web-tier --recursive
 
 cd ~/web-tier
 npm install
@@ -133,7 +133,7 @@ cd /etc/nginx
 ls
 
 sudo rm nginx.conf
-sudo aws s3 cp s3://3tierproject-avinash/application-code/nginx.conf .
+sudo aws s3 cp s3://3tier-s3-bucket237/application-code/nginx.conf .
 
 sudo service nginx restart
 
