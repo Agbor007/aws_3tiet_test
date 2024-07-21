@@ -23,13 +23,20 @@ github.com/synthetico/3-Tier-_Architecture.git
 On the app server, install MySQL:
 
 ```bash
-sudo yum install mysql -y
-sudo apt install mysql -y #Ubuntu
+sudo yum update
+sudo yum upgrade
+sudo yum install mysql -y #linux2
+
+sudo apt update
+sudo apt upgrade -y
+sudo apt-get install mysql-server #Ubuntu
+sudo snap install aws-cli --classic #Install aws cli as ubuntu does not come with deafult
+
 ```
 
 ### Configure MySQL Database
 
-Connect to the database and perform basic configuration: Replace below info with your DB information
+Connect to the RDS database you created and perform basic configuration: Replace below info with your DB information
 
 ```bash
 mysql -h mydb.cfpgnjehw330.ap-south-1.rds.amazonaws.com -u admin -p
@@ -71,7 +78,7 @@ nvm use 16
 
 npm install -g pm2
 ```
-
+#Upload your application-code into the S3 bucket
 Download application code from S3 and start the application:
 
 ```bash
@@ -95,6 +102,7 @@ curl http://localhost:4000/health
 ```
 
 It should return: `This is the health check`.
+#close the Ec2, create an AMI from it and proceed.
 
 ## Internal Load Balancer
 
@@ -111,6 +119,7 @@ internal-app-alb-574972862.ap-south-1.elb.amazonaws.com
 Install Node.js and Nginx on the web tier:
 
 ```bash
+sudo snap install aws-cle --classic #for ubuntu
 curl -o- https://raw.githubusercontent.com/avizway1/aws_3tier_architecture/main/install.sh | bash
 source ~/.bashrc
 nvm install 16
@@ -122,8 +131,10 @@ aws s3 cp s3://3tier-s3-bucket237/application-code/web-tier/ web-tier --recursiv
 cd ~/web-tier
 npm install
 npm run build
+npm audit fix --force #incase you see any error
 
 sudo amazon-linux-extras install nginx1 -y
+sudo apt install nginx -y #for ubuntu
 ```
 
 Update Nginx configuration:
@@ -134,6 +145,7 @@ ls
 
 sudo rm nginx.conf
 sudo aws s3 cp s3://3tier-s3-bucket237/application-code/nginx.conf .
+
 
 sudo service nginx restart
 
