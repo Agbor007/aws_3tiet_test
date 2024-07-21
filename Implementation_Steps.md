@@ -19,6 +19,7 @@ github.com/synthetico/3-Tier-_Architecture.git
 ## App Server Setup: Launch an ec2 instance to be used in App-Tier
 
 ### Install MySQL
+#I used Ubuntu Server for my App-Tier
 
 On the app server, install MySQL:
 
@@ -115,6 +116,7 @@ internal-app-alb-574972862.ap-south-1.elb.amazonaws.com
 ## Web Tier Setup: Launch EC2 Instance in Web Subnets we have created in Custom VPC
 
 ### Web Tier Installation. 
+#I used Linux 2 for my WebTier
 
 Install Node.js and Nginx on the web tier:
 
@@ -133,7 +135,7 @@ npm install
 npm run build
 npm audit fix --force #incase you see any error
 
-sudo amazon-linux-extras install nginx1 -y
+sudo yum instal nginx
 sudo apt install nginx -y #for ubuntu
 ```
 
@@ -145,12 +147,11 @@ ls
 
 sudo rm nginx.conf
 sudo aws s3 cp s3://3tier-s3-bucket237/application-code/nginx.conf .
+#do not forget the . at the end of the previous code line above
 
 
 sudo service nginx restart
-
 chmod -R 755 /home/ec2-user
-
 sudo chkconfig nginx on
 ```
 ```
