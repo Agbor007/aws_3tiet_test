@@ -95,6 +95,8 @@ pm2 logs
 pm2 startup
 pm2 save
 ```
+![image](https://github.com/user-attachments/assets/bc1cfad0-fe9d-4f7a-a4d1-8233ca9a6549)
+
 
 Verify that the application is running by executing:
 
